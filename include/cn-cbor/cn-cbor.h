@@ -88,7 +88,7 @@ typedef struct cn_cbor {
     /** CN_CBOR_INT */
     long sint;
     /** CN_CBOR_UINT */
-    unsigned long uint;
+    uint64_t uint;
     /** CN_CBOR_DOUBLE */
     double dbl;
     /** for use during parsing */
