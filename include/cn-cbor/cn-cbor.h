@@ -86,7 +86,7 @@ typedef struct cn_cbor {
     /** CN_CBOR_TEXT */
     const char* str;
     /** CN_CBOR_INT */
-    long sint;
+    int64_t sint;
     /** CN_CBOR_UINT */
     uint64_t uint;
     /** CN_CBOR_DOUBLE */
@@ -313,7 +313,7 @@ cn_cbor* cn_cbor_string_create(const char* data
                                cn_cbor_errback *errp);
 
 /**
- * Create a CBOR integer (either positive or negative).
+ * Create a CBOR signed integer.
  *
  * @param[in]   value    the value of the integer
  * @param[in]   CBOR_CONTEXT Allocation context (only if USE_CBOR_CONTEXT is defined)
@@ -321,6 +321,18 @@ cn_cbor* cn_cbor_string_create(const char* data
  * @return                   The created object, or NULL on error
  */
 cn_cbor* cn_cbor_int_create(int64_t value
+                            CBOR_CONTEXT,
+                            cn_cbor_errback *errp);
+
+/**
+ * Create a CBOR unsigned integer.
+ *
+ * @param[in]   value    the value of the integer
+ * @param[in]   CBOR_CONTEXT Allocation context (only if USE_CBOR_CONTEXT is defined)
+ * @param[out]  errp         Error, if NULL is returned
+ * @return                   The created object, or NULL on error
+ */
+cn_cbor* cn_cbor_uint_create(uint64_t value
                             CBOR_CONTEXT,
                             cn_cbor_errback *errp);
 
