@@ -337,6 +337,18 @@ cn_cbor* cn_cbor_uint_create(uint64_t value
                             cn_cbor_errback *errp);
 
 /**
+ * Create a CBOR unsigned boolean.
+ *
+ * @param[in]   value    the value of the boolean
+ * @param[in]   CBOR_CONTEXT Allocation context (only if USE_CBOR_CONTEXT is defined)
+ * @param[out]  errp         Error, if NULL is returned
+ * @return                   The created object, or NULL on error
+ */
+cn_cbor* cn_cbor_bool_create(bool value
+                            CBOR_CONTEXT,
+                            cn_cbor_errback *errp);
+
+/**
  * Put a CBOR object into a map with a CBOR object key.  Duplicate checks are NOT
  * currently performed.
  *

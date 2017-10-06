@@ -86,6 +86,22 @@ cn_cbor* cn_cbor_uint_create(uint64_t value
   return ret;
 }
 
+cn_cbor* cn_cbor_bool_create(bool value
+                            CBOR_CONTEXT,
+                            cn_cbor_errback *errp)
+{
+  cn_cbor* ret;
+  INIT_CB(ret);
+
+  if(value == false) {
+	  ret->type = CN_CBOR_FALSE;
+  } else {
+	  ret->type = CN_CBOR_TRUE;
+  }
+
+  return ret;
+}
+
 static bool _append_kv(cn_cbor *cb_map, cn_cbor *key, cn_cbor *val)
 {
   //Connect key and value and insert them into the map.
