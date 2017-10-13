@@ -73,6 +73,19 @@ cn_cbor* cn_cbor_int_create(int64_t value
   return ret;
 }
 
+cn_cbor* cn_cbor_double_create(double value
+                            CBOR_CONTEXT,
+                            cn_cbor_errback *errp)
+{
+  cn_cbor* ret;
+  INIT_CB(ret);
+
+  ret->type = CN_CBOR_DOUBLE;
+  ret->v.dbl = value;
+
+  return ret;
+}
+
 cn_cbor* cn_cbor_uint_create(uint64_t value
                             CBOR_CONTEXT,
                             cn_cbor_errback *errp)

@@ -313,6 +313,18 @@ cn_cbor* cn_cbor_string_create(const char* data
                                cn_cbor_errback *errp);
 
 /**
+ * Create a CBOR double.
+ *
+ * @param[in]   value    the value of the double
+ * @param[in]   CBOR_CONTEXT Allocation context (only if USE_CBOR_CONTEXT is defined)
+ * @param[out]  errp         Error, if NULL is returned
+ * @return                   The created object, or NULL on error
+ */
+cn_cbor* cn_cbor_double_create(double value
+                            CBOR_CONTEXT,
+                            cn_cbor_errback *errp);
+
+/**
  * Create a CBOR signed integer.
  *
  * @param[in]   value    the value of the integer
