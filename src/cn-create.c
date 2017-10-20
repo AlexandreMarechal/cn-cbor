@@ -55,6 +55,26 @@ cn_cbor* cn_cbor_string_create(const char* data
   return ret;
 }
 
+cn_cbor* cn_cbor_byte_array_create(const uint8_t* data,
+							   size_t size
+                               CBOR_CONTEXT,
+                               cn_cbor_errback *errp)
+{
+  cn_cbor* ret;
+  INIT_CB(ret);
+
+  if(data == NULL || size == 0) {
+	  if (errp) {errp->err = CN_CBOR_ERR_INVALID_PARAMETER;}
+	  return NULL;
+  }
+
+  ret->type = CN_CBOR_BYTES;
+  ret->length = size;
+  ret->v.bytes = data;
+
+  return ret;
+}
+
 cn_cbor* cn_cbor_int_create(int64_t value
                             CBOR_CONTEXT,
                             cn_cbor_errback *errp)

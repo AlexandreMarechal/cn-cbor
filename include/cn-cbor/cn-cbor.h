@@ -313,6 +313,24 @@ cn_cbor* cn_cbor_string_create(const char* data
                                cn_cbor_errback *errp);
 
 /**
+ * Create a CBOR byte array.
+ * The data being stored in the pointer is *not* owned the CBOR object, so it is
+ * not freed automatically.
+ *
+ * @note: Do NOT use this function with untrusted data.
+ *
+ * @param[in]   data         pointer of byte array
+ * @param[in]   size         size of byte array
+ * @param[in]   CBOR_CONTEXT Allocation context (only if USE_CBOR_CONTEXT is defined)
+ * @param[out]  errp         Error, if NULL is returned
+ * @return                   The created object, or NULL on error
+ */
+cn_cbor* cn_cbor_byte_array_create(const uint8_t* data,
+							   size_t size
+                               CBOR_CONTEXT,
+                               cn_cbor_errback *errp);
+
+/**
  * Create a CBOR double.
  *
  * @param[in]   value    the value of the double
